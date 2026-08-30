@@ -186,10 +186,13 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAEAAAABAAAAAAABAAA
 tile_set = SubResource("TileSet_1vivr")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1491023273]
+floor_constant_speed = true
+floor_max_angle = 1.5707964
+floor_snap_length = 32.0
 script = ExtResource("2_uw3np")
 
 [node name="Camera" type="Camera2D" parent="CharacterBody2D" unique_id=584042434]
-position = Vector2(19.00003, 237)
+position = Vector2(16, 250)
 zoom = Vector2(1.5, 1.5)
 limit_left = -300
 limit_top = -300
@@ -200,11 +203,11 @@ position_smoothing_enabled = true
 position_smoothing_speed = 9.0
 
 [node name="Collizion" type="CollisionShape2D" parent="CharacterBody2D" unique_id=2062073424]
-position = Vector2(16.5, 271.5)
+position = Vector2(16, 270)
 shape = ExtResource("4_253g8")
 
 [node name="Anim" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=416062236]
-position = Vector2(16, 242)
+position = Vector2(16, 240)
 scale = Vector2(1.4166666, 1.4166666)
 sprite_frames = SubResource("SpriteFrames_1vivr")
 animation = &"move_up"

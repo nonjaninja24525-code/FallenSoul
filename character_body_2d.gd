@@ -1,38 +1,24 @@
 extends CharacterBody2D
 
-const SPEED = 300.0
+var SPEED = 200
 
-func input_control():
-	var direction = Vector2()
-	
-	if Input.is_action_pressed("player_move_up"):
-		direction.y -= 1
-		direction.x = 0
-		$Anim.play("move_up")
-
-	if Input.is_action_pressed("player_move_down"):
-		direction.y += 1
-		direction.x = 0
-		$Anim.play("move_down")
-
-	if Input.is_action_pressed("player_move_left"):
-		direction.x -= 1
-		direction.y = 0
+func player_movement_control():
+	var direction = Input.get_vector("player_move_left", "player_move_right", "player_move_up", "player_move_down")
+		
+	if direction.x <= -0.5:
 		$Anim.play("move_left")
-
-	if Input.is_action_pressed("player_move_right"):
-		direction.x += 1
-		direction.y = 0
+	elif direction.x >= 0.5:
 		$Anim.play("move_right")
+	elif direction.y <= -0.5:
+		$Anim.play("move_up")
+	elif direction.y >= 0.5:
+		$Anim.play("move_down")
 		
-	if !Input.is_action_pressed("player_move_up") and !Input.is_action_pressed("player_move_down") and !Input.is_action_pressed("player_move_left") and !Input.is_action_pressed("player_move_right"):
+	if direction == Vector2.ZERO:
 			$Anim.set_frame_and_progress(1, 0)
-	
-		
-	
-	
+			
 	velocity = direction * SPEED
 	
 func  _physics_process(delta: float) -> void:
-	input_control()
+	player_movement_control()
 	move_and_slide()
